@@ -1,28 +1,35 @@
 $(document).ready( function(){
-	/*
-	*ocultar icono back
-	*/
-	$('.js-back').hide();
-	/*
-	*asignar texto nuevas recetas en printNews
-	*/
-	printNews();
+  /*
+  *ocultar icono back
+  */
+  $('.js-back').hide();
+  /*
+  *asignar texto nuevas recetas en printNews
+  */
+  printNews();
 
-		$(index.html).hide(b);
-	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
-	renderHighlightedRecipes(recipesArray);
+  //La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
+  renderHighlightedRecipes(recipesArray);
 
 });
-
+/*
+*funcion agrega texto nuevas recetas
+*/
 function printNews(){
-	$('#print').append('NUEVAS RECETAS');
+  $('#print').append('NUEVAS RECETAS');
 }
+
 /*
 * Función que se encarga de pintar TODAS las recetas que tengan 
 * marcado el atributo "highlighted" como TRUE
 */
 function renderHighlightedRecipes(recipesArray) {
-	console.log('Recipes: ', recipesArray);
+  for( var i in recipesArray){
+    if(recipesArray[i]['highlighted'] === true){
+      renderRecipe();
+    }
+  }
+  console.log('Recipes: ', recipesArray);
 }
 
 /*
@@ -32,7 +39,7 @@ function renderHighlightedRecipes(recipesArray) {
 * archivo "templates/templates-recipe.html"
 */
 function renderRecipe(recipe) {
-	console.log('Voy a pintar la receta: ', recipe);
+  console.log('Voy a pintar la receta: ', recipe);
 }
 
 
@@ -41,7 +48,7 @@ function renderRecipe(recipe) {
 * Función que se encarga de pintar todas las actividades
 */
 function renderActivities(activitiesArray) {
-	console.log('Activities: ', activitiesArray);
+  console.log('Activities: ', activitiesArray);
 }
 
 /*
@@ -50,7 +57,7 @@ function renderActivities(activitiesArray) {
 * archivo "templates/templates-activity.html"
 */
 function renderActivity(recipe) {
-	
+  
 }
 
 
