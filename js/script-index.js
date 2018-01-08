@@ -55,6 +55,7 @@ item.show();
 *se modifica lo que sea necesario...
 */
 item.find('.title-recipe').text(recipe["title"]);
+item.find(".item-recipe").attr('src', recipe["url"]);
 /*
 *y se incrusta donde se quiera
 */
