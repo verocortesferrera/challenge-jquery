@@ -1,8 +1,12 @@
 $(document).ready( function(){
-	$('.js-back').hide();
 	/*
 	*ocultar icono back
 	*/
+	$('.js-back').hide();
+	/*
+	*asignar texto nuevas recetas en printNews
+	*/
+	printNews();
 
 		$(index.html).hide(b);
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
@@ -10,7 +14,9 @@ $(document).ready( function(){
 
 });
 
-
+function printNews(){
+	$('#print').append('NUEVAS RECETAS');
+}
 /*
 * Función que se encarga de pintar TODAS las recetas que tengan 
 * marcado el atributo "highlighted" como TRUE
