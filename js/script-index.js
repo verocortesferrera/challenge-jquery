@@ -26,7 +26,7 @@ function printNews(){
 function renderHighlightedRecipes(recipesArray) {
   for( var i in recipesArray){
     if(recipesArray[i]['highlighted'] === true){
-      renderRecipe();
+      renderRecipe(recipesArray[i]);
     }
   }
   console.log('Recipes: ', recipesArray);
@@ -40,8 +40,27 @@ function renderHighlightedRecipes(recipesArray) {
 */
 function renderRecipe(recipe) {
   console.log('Voy a pintar la receta: ', recipe);
-}
+  /*
+  *guardo en una variable el template
+  */
+  var template = $('#recetas').html();
 
+/*
+*se clona para poderlo modificar...
+*/
+var item = $(template).clone();
+//habia ocultado el div en el html, ahora lo muestro
+item.show();
+/*
+*se modifica lo que sea necesario...
+*/
+item.find('.title-recipe').text(recipe["title"]);
+/*
+*y se incrusta donde se quiera
+*/
+$('.list-recipes').append(item);
+
+}
 
 
 /*
