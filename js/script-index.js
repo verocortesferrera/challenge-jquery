@@ -1,5 +1,10 @@
 $(document).ready( function(){
+	$('.js-back').hide();
+	/*
+	*ocultar icono back
+	*/
 
+		$(index.html).hide(b);
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
 
