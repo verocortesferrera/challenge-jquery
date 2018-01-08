@@ -23,12 +23,14 @@ function printNews(){
 * Función que se encarga de pintar TODAS las recetas que tengan 
 * marcado el atributo "highlighted" como TRUE
 */
+var recipe = [];
 function renderHighlightedRecipes(recipesArray) {
   for( var i in recipesArray){
     if(recipesArray[i]['highlighted'] === true){
-      renderRecipe(recipesArray[i]);
+      recipe.push(recipesArray[i]);
     }
   }
+  renderRecipe(recipe);
   console.log('Recipes: ', recipesArray);
 }
 
@@ -41,27 +43,34 @@ function renderHighlightedRecipes(recipesArray) {
 function renderRecipe(recipe) {
   console.log('Voy a pintar la receta: ', recipe);
   /*
-  *guardo en una variable el template
+  *var template = $('#recetas').html();
+  *var item = $(template).clone();
+  *item.show();
+  *item.find('.title-recipe').text(recipe["title"]);
+  *item.find('.author-recipe').text(recipe["name"]);
+  *var imagen = recipe["url"].append();
+  *item.find(".item-recipe").attr('srcset', recipe["url"]);
+  *$('.list-recipes').append(item);
   */
-  var template = $('#recetas').html();
-
-/*
-*se clona para poderlo modificar...
-*/
-var item = $(template).clone();
-//habia ocultado el div en el html, ahora lo muestro
-item.show();
-/*
-*se modifica lo que sea necesario...
-*/
-item.find('.title-recipe').text(recipe["title"]);
-item.find(".item-recipe").attr('src', recipe["url"]);
-/*
-*y se incrusta donde se quiera
-*/
-$('.list-recipes').append(item);
-
-}
+    for(var i in recipe) {
+    var titleRecipe = recipe[i].title;
+    var authorRecipe = recipe[i].source.name;
+    var imagen = recipe[i].name;
+    //console.log(titleRecipe, authorName, image);
+    $('.list-recipes').append('<a class="item-recipe" href="#">' +
+                                '<span class="attribution">'+
+                                  '<span class="title-recipe">'+ titleRecipe +'</span>' +
+                                  '<span class="metadata-recipe">'+
+                                    '<span class="author-recipe">'+ authorRecipe +'</span>' +
+                                    '<span class="bookmarks-recipe">' +
+                                      '<span class="icon-bookmark"></span>' +
+                                    '</span>' +
+                                  '</span>' +
+                                '</span>' +
+                                '<img src="img/recipes/320x350/' + imagen + '.jpg' + '"/>' +
+                              '</a>');
+    }
+  }
 
 
 /*
